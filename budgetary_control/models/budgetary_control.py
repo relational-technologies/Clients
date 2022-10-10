@@ -26,7 +26,7 @@ import openerp.addons.decimal_precision as dp
 class BudgetaryControl(models.Model):
     _name = 'budgetary.control'
 
-    @api.one
+    #@api.one
     @api.depends('lines.amount')
     def _get_total(self):
         total = 0.0
@@ -34,7 +34,7 @@ class BudgetaryControl(models.Model):
             total += line.amount
         self.total_amount = total
 
-    @api.one
+    #@api.one
     @api.depends('lines.amount_allocated')
     def _get_total_allocated(self):
         total = 0.0
@@ -62,7 +62,7 @@ class BudgetaryControl(models.Model):
 class BudgetaryControlLine(models.Model):
     _name = 'budgetary.control.line'
 
-    @api.one
+    #@api.one
     @api.depends('analytic_account', 'analytic_account.analytic_lines')
     def _get_allocated(self):
         analytic_line_obj = self.env['account.analytic.line']
